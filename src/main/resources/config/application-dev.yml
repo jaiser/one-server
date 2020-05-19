@@ -1,0 +1,17 @@
+
+#数据库配置
+spring:
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/zjsqmdb
+    username: jaiser
+    password: 123456
+    hikari:
+      maximum-pool-size: 40
+
+
+
+jwt-conf:
+  jwt-Exp-Time: 600
+  secret: jaiser_one

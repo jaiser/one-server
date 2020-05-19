@@ -1,0 +1,40 @@
+
+#默认启动profile
+spring:
+  application:
+    name: oneserver
+  profiles:
+    active: dev
+  security:
+    user:
+      name: user
+      password: 123456
+
+#端口号
+server:
+  port: 8901
+
+#mybatis配置
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.jaiser.oneserver.web.vm
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    call-setters-on-nulls: true #将字段映射为Map,空值是否映射
+    jdbc-type-for-null: 'null' #插入空值时不需要指定类型
+    map-underscore-to-camel-case: true #开启数据库表列名与POJO属性名驼峰命名映射
+    auto-mapping-behavior: full #默认partial,只会自动映射没有定义嵌套结果集映射的结果集
+# mybatis分页配置
+pagehelper:
+  auto-runtime-dialect: true  #设置为 true 时，允许在运行时根据多数据源自动识别对应方言的分页
+  close-conn: true  #控制获取连接后，是否关闭该连接。 默认为 true
+  reasonable: true #分页合理化，默认false
+  support-methods-arguments: true #是否支持接口参数来传递分页参数，默认false
+  params: count=countSql
+  page-size-zero: true  #true的时候，如果pagesize设置为0(或RowBounds的limit=0)就不执行分页,返回全部结果,默认false
+
+
+logging:
+  config: classpath:logback-spring.xml
+
+
